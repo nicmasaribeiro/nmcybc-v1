@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Asset {{asset.id}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #007bff;
+        }
+        .asset-details, .asset-ls {
+            margin-bottom: 20px;
+        }
+        .asset-details div, .asset-ls div {
+            margin-bottom: 10px;
+        }
+        .asset-ls div {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Asset {{asset.id}}</h1>
+        </div>
+        <div class="asset-details">
+            <div><span class="label">Name:</span> {{asset.investment_name}}</div>
+            <div><span class="label">Owner:</span> {{asset.owner}}</div>
+            <div><span class="label">Quantity:</span> {{asset.quantity}}</div>
+            <div><span class="label">Market Cap:</span> {{asset.market_cap}}</div>
+            <div><span class="label">Change Value:</span> {{asset.change_value}}</div>
+            <div><span class="label">Starting Price:</span> {{asset.starting_price}}</div>
+            <div><span class="label">Market Price:</span> {{asset.market_price}}</div>
+            <div><span class="label">Coins Value:</span> {{asset.coins_value}}</div>
+            <div><span class="label">Investors:</span> {{asset.investors}}</div>
+            <div><span class="label">Receipt:</span> {{asset.receipt}}</div>
+            <div><span class="label">Tokenized Price:</span> {{asset.tokenized_price}}</div>
+        </div>
+        <div class="asset-ls">
+            <h2>Asset List</h2>
+            {% for i in asset.ls %}
+            <div>
+                <div><span class="label">Address:</span> {{i.address}}</div>
+                <div><span class="label">Amount:</span> {{i.amount}}</div>
+                <div><span class="label">Currency:</span> {{i.currency}}</div>
+                <div><span class="label">Name:</span> {{i.name}}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

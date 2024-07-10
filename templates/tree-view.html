@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Stock Binomial Simulation</title>
+		<style>
+				form {
+				background: #fff;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				width: 300px;
+			}
+			input[type="float"], input[type="submit"] {
+				width: 100%;
+				padding: 10px;
+				margin: 10px 0;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+			}
+			input[type="submit"] {
+				background-color: #5cb85c;
+				color: white;
+				border: none;
+				cursor: pointer;
+			}
+			input[type="submit"]:hover {
+				background-color: #4cae4c;
+			}
+		</style>
+	</head>
+	<body>
+		<h1><a href="/cmc">Back</a></h1>
+		<h2>Binomial Matrix Simulation</h2>
+		<form method="POST">
+			<input type="float" name="s0" placeholder="Initial stock price" required>
+			<input type="float" name="u" placeholder="Up factor" required>
+			<input type="float" name="d" placeholder="Down factor" required>
+			<input type="float" name="p" placeholder="Probability of up move" required>
+			<input type="float" name="n" placeholder="Number of steps" required>
+			<input type="submit" value="Submit">
+		</form>
+		
+		
+	</body>
+</html>

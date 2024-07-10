@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .block-detail {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .block-detail label {
+            font-weight: bold;
+            color: #555;
+        }
+        .block-detail span {
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ user }} Transaction Details</h1>
+        {% for t in trans %}
+        <div class="block-detail">
+            <label>Amount:</label> <span>{{ t.amount }}</span>
+            <label>From Address:</label> <span>{{ t.from_address }}</span>
+            <label>Name:</label> <span>{{ t.name }}</span>
+            <label>To Address:</label> <span>{{ t.to_address }}</span>
+            <label>Transaction ID:</label> <span>{{ t.txid }}</span>
+            <label>Type:</label> <span>{{ t.type }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

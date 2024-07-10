@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logknot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h3 {
+            text-align: center;
+            color: #333;
+        }
+        .element {
+            padding: 10px;
+            background-color: #a1c7cf;
+            border: 1px solid black;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            color: black;
+        }
+        th {
+            background-color: #a1c7cf;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% extends "base.html" %}
+        
+        {% block content %}
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Link</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="/tradeview/aapl">Tradeview</a></td>
+                    <td>View Tradeview</td>
+                </tr>
+                <tr>
+                    <td><a href="/graph">Simple Graph</a></td>
+                    <td>View a simple graph representation</td>
+                </tr>
+                <tr>
+                    <td><a href="/graph/freq">Intraday</a></td>
+                    <td>View intraday graph details</td>
+                </tr>
+                <tr>
+                    <td><a href="/1d/forecast">1 Day Forecast</a></td>
+                    <td>View the 1 day forecast</td>
+                </tr>
+                <tr>
+                    <td><a href="/1m/forecast">1 Month Forecast</a></td>
+                    <td>View the 1 month forecast</td>
+                </tr>
+                <tr>
+                    <td><a href="/1y/forecast">1 Year Forecast</a></td>
+                    <td>View the 1 year forecast</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endblock %}
+    </div>
+</body>
+</html>

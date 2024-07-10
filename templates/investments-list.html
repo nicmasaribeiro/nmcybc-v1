@@ -1,0 +1,32 @@
+r<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Investments</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    div {
+        color: red;
+        font-size: 80;
+    }
+</style>
+
+    {% for i in invs %}
+    <ol>
+        <div class="investments">
+            {{i.get_name()}} : {{i.get_marketcap()}} : {{i.get_owner().get_public_key()}} : {{i.get_coin()}}            
+<!--        <iframe src="{{i.get_file()}}"></iframe>-->
+        </div>
+    </ol>
+    {% endfor %}
+
+
+{% endblock %}
+
+</body>
+</html>

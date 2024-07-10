@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!DOCTYPE html>
+		<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<title>logknot</title>
+			</head>
+			<body>
+				{% extends "base.html" %}
+				
+				{% block content %}
+				<h3><a href="/cov/prices">Covariance Prices</a></h3>
+				<h3><a href="/cov/returns">Covariance Returns</a></h3>
+				<h3><a href="/corr/returns">Correlation Return</a></h3>
+				<h3><a href="/corr/prices">Correlation Prices</a></h3>
+				{% endblock %}
+			</body>
+		</html>
+	</body>
+</html>

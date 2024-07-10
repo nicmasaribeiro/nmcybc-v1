@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            table-layout: fixed;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            word-wrap: break-word;
+            color: black;
+        }
+        th {
+            background-color: #a1c7cf;
+            color: #fff;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Assets</h1>
+        {% extends "base.html" %}
+        
+        {% block content %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Token Address</th>
+                    <th>User Address</th>
+                    <th>Transaction Receipt</th>
+                    <th>Quantity</th>
+                    <th>Cash</th>
+                    <th>Coins</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for asset in assets %}
+                <tr>
+                    <td>{{asset.id}}</td>
+                    <td>{{asset.username}}</td>
+                    <td>{{asset.token_address}}</td>
+                    <td>{{asset.user_address}}</td>
+                    <td>{{asset.transaction_receipt}}</td>
+                    <td>{{asset.quantity}}</td>
+                    <td>{{asset.cash}}</td>
+                    <td>{{asset.coins}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endblock %}
+    </div>
+</body>
+</html>

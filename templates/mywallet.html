@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h3 {
+            color: #333;
+            text-align: center;
+        }
+        .wallet-info {
+            background-color: #a5b0c2;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .wallet-info h3 {
+            margin: 10px 0;
+            font-weight: normal;
+        }
+        .wallet-info .value {
+            color: #555;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="wallet-info">
+        <h1>Welcome to your wallet, {{user}}</h1>
+        <h3>Wallet ID: <span class="value">{{wallet.id}}</span></h3>
+        <h3>Wallet Address: <span class="value">{{wallet.address}}</span></h3>
+        <h3>Wallet Balance: <span class="value">{{wallet.balance}}</span></h3>
+        <h3>Wallet Coins: <span class="value">{{wallet.coins}}</span></h3>
+        <h3>Wallet Token: <span class="value">{{wallet.token}}</span></h3>
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information</title>
+</head>
+<body>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST">
+    <input type="text" name="ticker">
+    <input type="number" name="qt">
+    <input type="submit">
+</form>
+
+{% endblock %}
+
+</body>
+</html>

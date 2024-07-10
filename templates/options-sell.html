@@ -1,0 +1,28 @@
+
+
+
+
+{% extends "base.html" %}
+
+{% block title %}Options Pricing Model{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<h1>Buy Options</h1>
+<form method="POST">
+    
+    <label for="username">Asset Receipt Address:</label><br>
+    <input type="text" id="receipt" name="receipt" class="input-field"><br><br>
+    
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" class="input-field"><br><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" class="input-field"><br><br>
+
+    <label for="ticker">Asset Ticker:</label><br>
+    <input type="text" id="ticker" name="ticker" class="input-field"><br><br>
+
+    <input type="submit" value="Calculate" class="submit-button">
+</form>
+{% endblock %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Form Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="password"], input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        input[type="submit"]:focus {
+            outline: none;
+        }
+        input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder {
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1><a href='/'>Back</a></h1>
+    <form method="POST">
+        <label for="username_from">From Username:</label>
+        <input type="text" id="username_from" name="username_from" placeholder="Enter your username">
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+        
+        <label for="username_to">To Username:</label>
+        <input type="text" id="username_to" name="username_to" placeholder="Enter recipient's username">
+        
+        <label for="value">Amount:</label>
+        <input type="number" id="value" name="value" placeholder="$0.00">
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

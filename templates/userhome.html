@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>logknot</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <div>
+        Username : {{client.get_username()}}    
+    </div>
+    <div>
+        Public Key : {{client.get_public_key()}}    
+    </div>
+    <div>
+        Cash : {{client.wallet.get_settled_cash()}}    
+    </div>
+    <div>
+        Investments
+<!---->
+<!---->
+        {% for i in client.wallet.get_active_investments() %}
+<!---->
+        <li>
+        {{ i.get_file().split('/')[-1]}}
+            <a href="{{url_for('static',filename=i.get_file().split('/')[-1])}}">file</a>
+        </li>
+<!---->
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+</body>
+</html>

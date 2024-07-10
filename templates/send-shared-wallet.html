@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		{% extends "base.html" %}
+	
+		{% block content %}
+		<form method="POST">
+			<input type="text" name="address" placeholder="address">
+			<input type="text" name="username" placeholder="username">
+			<input type="float" name="value" placeholder="$0.00">
+			<input type="password" name="password" placeholder="wallet password">
+			<input type="submit">
+		</form>
+		
+		{% endblock %}
+		
+	</body>
+</html>

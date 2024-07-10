@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Investments Ledger</h2>
+    {% for i in invs %}
+    <ul>
+        <li><strong>ID:</strong> {{i.id}}</li>
+        <li><strong>Transaction ID:</strong> {{i.receipt}}</li>
+        <li><strong>Owner:</strong> {{i.owner}}</li>
+        <li><strong>Investment Name:</strong> {{i.investment_name}}</li>
+        <li><strong>Number of Shares Staked:</strong> {{i.quantity}}</li>
+        <li><strong>Marketcap:</strong> {{i.market_cap}}</li>
+        <li><strong>Change Value:</strong> {{i.change_value}}</li>
+        <li><strong>Starting Price:</strong> {{i.starting_price}}</li>
+        <li><strong>Market Price:</strong> {{i.market_price}}</li>
+        <li><strong>Staked Coins Amount:</strong> {{i.coins_value}}</li>
+        <li><strong>Number of Investors:</strong> {{i.investors}}</li>
+        <li><strong>Receipt:</strong> {{i.receipt}}</li>
+        <li><strong>Tokenized Price:</strong> {{i.tokenized_price}}</li>
+    </ul>
+    {% endfor %}
+</body>
+</html>

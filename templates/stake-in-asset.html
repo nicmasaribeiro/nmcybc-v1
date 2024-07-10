@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>logknot</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<form method="POST"> 
+    <input type="number" name="amount" placeholder="invesment amount">
+    <input type="number" name="investment_id" placeholder="investment_id">
+    <input type="text" name="username" placeholder="username">
+    <select name="ttype">
+        <option name="coins">Stake Coins</option>
+        <option name="cash">Spend Cash</option>
+    </select>
+    <input type="submit">
+
+</form>
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Transaction List</h2>
+    {% for i in trans %}
+    <ul>
+        <li><strong>ID:</strong> {{i.id}}</li>
+        <li><strong>Transaction ID:</strong> {{i.txid}}</li>
+        <li><strong>Username:</strong> {{i.username}}</li>
+        <li><strong>From Address:</strong> {{i.from_address}}</li>
+        <li><strong>To Address:</strong> {{i.to_address}}</li>
+        <li><strong>Amount:</strong> {{i.amount}}</li>
+        <li><strong>Timestamp:</strong> {{i.timestamp}}</li>
+        <li><strong>Type:</strong> {{i.type}}</li>
+        <li><strong>Signature:</strong> {{i.signature}}</li>
+    </ul>
+    {% endfor %}
+</body>
+</html>

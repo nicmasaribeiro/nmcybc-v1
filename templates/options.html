@@ -1,0 +1,49 @@
+
+
+
+
+{% extends "base.html" %}
+
+{% block title %}Options Pricing Model{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<h1>Buy Options</h1>
+<form method="POST">
+    
+    <label for="username">Asset Receipt:</label><br>
+    <input type="text" id="receipt" name="receipt" class="input-field"><br><br>
+    
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" class="input-field"><br><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" class="input-field"><br><br>
+
+    <label for="ticker">Asset Ticker:</label><br>
+    <input type="text" id="ticker" name="ticker" class="input-field"><br><br>
+
+    <label for="K">Strike Price (K):</label><br>
+    <input type="text" id="K" name="K" class="input-field"><br><br>
+
+    <label for="T">Time to Maturity (T in years):</label><br>
+    <input type="text" id="T" name="T" class="input-field"><br><br>
+
+    <label for="r">Risk-Free Rate (r):</label><br>
+    <input type="text" id="r" name="r" class="input-field"><br><br>
+
+    <label for="sigma">Volatility (sigma):</label><br>
+    <input type="text" id="sigma" name="sigma" class="input-field"><br><br>
+
+    <label for="stake">Staked Tokens (ST):</label><br>
+    <input type="text" id="stake" name="stake" class="input-field"><br><br>
+
+    <label for="option_type">Option Type:</label><br>
+    <select id="option_type" name="option_type" class="input-field">
+        <option value="call">Call</option>
+        <option value="put">Put</option>
+    </select><br><br>
+
+    <input type="submit" value="Calculate" class="submit-button">
+</form>
+{% endblock %}

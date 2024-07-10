@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Payment</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    
+    {% block content %}
+    <style>
+        button{
+            font-size: 50px;
+            width: 100%;
+            
+        }
+        .div {
+            padding: 50px;
+            background-color: white;
+            align-content: center;
+        }
+    </style>
+    <div class="div">
+    <form action="{{ url_for('create_checkout_session') }}" method="POST">
+        <button type="submit" id="checkout-button">Buy Cash</button>
+    </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

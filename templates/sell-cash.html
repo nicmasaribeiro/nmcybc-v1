@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Cash</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    
+    {% block content %}
+    <h1>Sell Cash</h1>
+    <form action="{{ url_for('sell_cash') }}" method="POST">
+        <label for="amount">Amount to Refund (USD):</label>
+        <input type="number" step="0.01" id="amount" name="amount" required>
+        <label for="payment_intent_id">Payment Intent ID:</label>
+        <input type="text" id="payment_intent_id" name="payment_intent_id" required>
+        <button type="submit">Sell Cash</button>
+    </form>
+    {% endblock %}
+</body>
+</html>

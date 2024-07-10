@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+<ol>
+    {% for i in users %}
+    
+    <li>
+        {{i.get_username()}} : {{i.get_public_key()}}
+    </li>
+    
+    {% endfor %}
+<ol>
+
+{% endblock %}
+
+</body>
+</html>

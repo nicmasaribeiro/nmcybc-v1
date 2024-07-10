@@ -1,0 +1,20 @@
+<html> 
+<head> 
+	<title>upload the file : GFG</title> 
+</head> 
+<body> 
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<form method = "POST"> 
+		<input type="text" name="ticker" placeholder="investment name">
+		<input type="number" name="value" placeholder="coin price">
+		<input type="number" name="index" placeholder="userkey">
+<!--	<input type="file" name="file" > -->
+		<input type = "submit"> 
+	</form> 
+	
+{% endblock %}
+</body> 
+</html>

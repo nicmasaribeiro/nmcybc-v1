@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Payment</title>
+</head>
+<body>
+    <button id="paypal-button">Pay with PayPal</button>
+
+    <script>
+        document.getElementById('paypal-button').addEventListener('click', async () => {
+            const response = await fetch('/create-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            const { approval_url } = await response.json();
+            window.location.href = approval_url;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>logknot</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% for i in vals %}
+    <div>
+        {{i.get_username()}} : {{i.get_public_key()}}
+    </div>
+    {% endfor %}
+
+
+{% endblock %}
+
+</body>
+</html>

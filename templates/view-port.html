@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for i in portfolio %}
+<div>
+    {{i.ticker}} {{i.qt}} <a href="/stocks/{{i.ticker}}">risk stats</a>  <a href="/remove/{{i.id}}">remove</a>
+    <a href="/g/{{i.ticker}}">graph</a>
+</div>
+{% endfor %}
+
+{% endblock %}
+</body>
+</html>

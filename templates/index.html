@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>logknot</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+<script>
+    create_user_logic =(e)=> {
+        let username = document.getElementById('ticker').value;
+        let password = document.getElementById('password').value;
+        let pk = document.getElementById('pk').value;
+
+        let url = 'http://127.0.0.1:8000/create-user/'+ username + '/' + password + '/' + pk;
+        window.location.replace(url) ;
+    }
+</script>
+    <input type="text" id="ticker" placeholder="username">
+    <input type="password" id="password" placeholder="password">
+    <input type="text" id="pk" placeholder="public-key">
+    <button onclick="create_user_logic();">Submit</button>
+
+
+{% endblock %}
+
+</body>
+</html>

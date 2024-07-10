@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>logknot</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+<script>
+    transaction_user_logic =(e)=> {
+        let sk = document.getElementById('i').value;
+        let rk = document.getElementById('ii').value;
+        let amount = document.getElementById('amount').value;
+        let password = document.getElementById('password').value;
+
+        let url = 'http://127.0.0.1:8000/set-transaction/'+ sk + '/' + rk + '/' + amount + '/' + password;
+//      /set-transaction/<senderkey>/<recipientkey>/<amount>
+        window.location.href = url ;
+    }
+</script>
+    <input type="number" id="i" placeholder="sender key">
+    <input type="password" id="password" placeholder="password">
+    <input type="number" id="ii" placeholder="recipient key">
+    <input type="number" id="amount" placeholder="transaction amount">
+    <button onclick="transaction_user_logic();">Submit</button>
+
+
+{% endblock %}
+
+</body>
+</html>

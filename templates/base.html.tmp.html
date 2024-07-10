@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NMCYBC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <style>
+      body {
+        background-color: gray;
+        color: white;
+      }
+    </style>
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='crawler.png') }}" />
+</head>
+<body>
+  <iframe src="https://www.desmos.com/calculator/rrmno6qntd?embed" width="10" height="10" style="border: 1px solid #ccc" frameborder=0></iframe>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="cmc">
+      <img src="{{ url_for('static', filename='crawler.png') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      NMCYBC
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/cmc">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            View
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/get/users">Users</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/get/vals">Validators</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/get/wallets">Wallets</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/get/assets">Investments</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/get/blocks">Blocks</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/bc/receipts">Blockchain Receipts</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Transactions
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/get/ledger">Transaction Ledger</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/transact">Make Transaction</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/mine">Mine Transaction</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/get/pending">Pending Transactions</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/get/approved">Approved Transactions</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/my/transactions">My Transactions</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Create
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/signup">User</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/signup/val">Validator</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/signup/wallet">Wallet</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/make/block">Block</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Investments
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/get/assets">Ledger</a></li>
+<!--        <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/show">Database</a></li>-->
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/create/investment">Create Asset</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/make/invest/asset">Invest in Asset</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/close/position">Close Asset Position </a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/liquidate">Liquidate Asset</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/buy/tokens">Buy Asset Tokens </a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/sell/tokens">Sell Asset Tokens</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/sell/options">Sell Asset Option </a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/buy/options">Buy Asset Option</a></li>
+            
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Credentials
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/usercred">User</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/valcred">Validator</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            JSON Data
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/track/inv">Track Investments</a></li>
+          <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/get/options">Track Option Investments</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/my/assets">Track My Assets</a></li>
+<!--        <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/usercred">User</a></li>-->
+<!--        <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/valcred">Validator</a></li>-->
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cash
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/buy/cash">Buy</a></li>
+            <li><a class="dropdown-item" href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/sell/cash">Sell</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+{% block content %}
+<div class="container mt-4">
+  <h2>NMCY Blockchain Home</h2>
+  <hr><br>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <button class="btn btn-primary btn-lg w-100" onclick="buy()">Buy Coins</button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-primary btn-lg w-100" onclick="sell()">Sell Coins</button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-secondary btn-lg w-100" onclick="mywallet()">My Wallet</button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-secondary btn-lg w-100" onclick="minerwallet()">Miner Wallet</button>
+    </div>
+
+    <div class="col-md-6">
+      <button class="btn btn-info btn-lg w-100" onclick="GetAsset()">View Asset</button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-info btn-lg w-100" onclick="GetBlock()">View Block</button>
+    </div>
+    <div class="col-md-6 offset-md-6">
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<style>
+.footer{
+  background-color: white;
+}
+</style>
+
+<footer style="background white;" class="mt-4">
+  <div class="footer">
+    <a href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/login" class="btn btn-link">Login</a>
+    <a href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/signup" class="btn btn-link">Register</a>
+    <a href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/admix" class="btn btn-link">Graphs</a>
+    <a href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/stats" class="btn btn-link">Stats</a>
+    <a href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/tree" class="btn btn-link">Tree</a>
+    <a href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/price" class="btn btn-link">Options Pricing</a>
+    <a href="file:///Users/nicholasmasagao/Desktop/tdbc-v7/app/templates/stats/binom" class="btn btn-link">Binomial Coefficients</a>
+  </div>
+</footer>
+
+<script>
+  const buy = () => window.location.href = "/buy/coins";
+  const sell = () => window.location.href = "/sell/coins";
+  const mywallet = () => {
+    window.location.href = '/get/mywallet';
+  };
+  const minerwallet = () => {
+    const address = prompt("address", "username/address");
+    const pass = prompt("password","password");
+    window.location.href = '/peer/' + address + '/' + pass;
+  };
+  const proccess = () => {
+    const address = prompt("user", "username/address");
+    window.location.href = '/proccess/' + address;
+  };
+  const GetDb = () => {
+    const address = prompt("user", "username/address");
+    window.location.href = '/get/db/' + address;
+  };
+  const GetAsset = () => {
+    const index = prompt("investment", "id/index");
+    window.location.href = '/get/asset/' + index;
+  };
+  const GetBlock = () => {
+    const index = prompt("block", "id/index");
+    window.location.href = '/get/block/' + index;
+  };
+  
+</script>
+
+</body>
+</html>

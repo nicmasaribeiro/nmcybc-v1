@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binomial Coefficients for Tree</title>
+    <style>
+    
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input[type="text"], input[type="submit"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="container">
+        <h2>Binomial Coefficients for Tree</h2>
+        <form method="POST">
+            <form method="POST">
+                <label style="color: black;">Asset Ticker</label>
+                <input type="text" name="ticker" placeholder="asset ticker">
+                <label style="color: black;">Asset Period</label>
+                <input type="text" name="period" placeholder="1d,1wk,1mo,2mo,3mo,1y,2y">
+                <label style="color: black;">Asset Interval</label>
+                <input type="text" name="interval" placeholder="1m,2m,10m,1h,2h,1d">
+                <input type="submit">
+            </form>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

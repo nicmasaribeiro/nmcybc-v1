@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transact</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            padding: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: black;
+        }
+        input[type="text"], input[type="float"] {
+            margin-bottom: 15px;
+            padding: 20px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            background-color: #5cb85c;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <div class="container">
+        <form method="POST">
+            <label for="name">Username</label>
+            <input type="text" id="name" name="name" placeholder="Enter your username">
+            
+            <label for="ticker">Investment Name</label>
+            <input type="text" id="ticker" name="ticker" placeholder="Enter the investment name">
+            
+            <label for="coins">Staked Coins</label>
+            <input type="float" step="0.01" id="coins" name="coins" placeholder="Enter the number of staked coins">
+            
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="Enter the password">
+
+
+            <label for="Quantity">Number Asset Shares</label>
+            <input type="float" name="qt" placeholder="Enter the number of tokens Staked">
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

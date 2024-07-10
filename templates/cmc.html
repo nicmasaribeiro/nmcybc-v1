@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NMCYBC Views</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            border: 5px solid black;
+        }
+        
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    {% extends "base.html" %}
+    
+    {% block content %}
+    
+    <h2>NMCY Blockchain Views</h2>
+    <hr><br>
+    
+    <div class="row g-4">
+        <div class="col-md-6">
+            <button class="btn btn-primary btn-lg w-100"><a style="color: white;"href="/html/trans">Transaction Ledger</a></button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary btn-lg w-100"><a style="color: white;" href="/html/investment/ledger">Investment Ledger</a></button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-secondary btn-lg w-100"><a style="color: white;" href="/html/mywallet">My Wallet</a></button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-secondary btn-lg w-100" onclick="minerwallet()"><a style="color: white;" href="/my/assets">My Assets</a></button>
+        </div>
+        
+        <div class="col-md-6">
+            <button class="btn btn-info btn-lg w-100" onclick="GetAsset()">View Asset</button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-info btn-lg w-100" onclick="GetBlock()">View Block</button>
+        </div>
+        <div class="col-md-6 offset-md-6">
+        </div>
+    </div>
+    <script>
+        function GetAsset(){
+            var id = prompt("Asset ID","ID");
+            window.location.href = '/asset/info/'+ id;
+        }
+        function GetBlock(){
+            var id = prompt("Block ID","ID");
+            window.location.href = '/html/block/'+ id;
+        }
+    </script>
+    {% endblock %}
+</body>
+</html>
