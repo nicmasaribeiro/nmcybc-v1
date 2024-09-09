@@ -12,7 +12,7 @@ from bokeh.plotting import figure, output_file, save
 from bokeh.embed import file_html
 from bokeh.resources import CDN
 from geom_forecast import GeometricBrownianMotion
-import mpld3
+# import mpld3
 import matplotlib.pyplot as plt
 import datetime as dt
 import base64
@@ -33,6 +33,8 @@ import stripe
 from flask_login import current_user, login_required, login_user
 import time
 from hashlib import sha256
+import sentry_sdk
+
 
 stripe.api_key = 'sk_test_51OncNPGfeF8U30tWYUqTL51OKfcRGuQVSgu0SXoecbNiYEV70bb409fP1wrYE6QpabFvQvuUyBseQC8ZhcS17Lob003x8cr2BQ'
 
@@ -43,6 +45,16 @@ pending = []
 Bet = [{'id': 0,'username': None ,"transaction": [{'to':None,'from':None,'coins': 0,'cash': 0,'date':dt.date.today()}]}]
 
 
+sentry_sdk.init(
+    dsn="https://c9b44a1891bb0d380c2c152be84d2881@o4507923736952832.ingest.us.sentry.io/4507923739443200",
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for tracing.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)
 
 global coin
 coin = Coin()
@@ -329,15 +341,10 @@ def create_transact():
 		blockchain.receipts['from'] = user.username
 		blockchain.receipts['value'] = value
 		blockchain.receipts['txid'] = txid
-		burn_hash = PofB.generate_burn_hash(id_from, value)
-		burn_hash , timestamp = PofB.burn_tokens(id_from, value)
 		network.add_transaction(blockchain.pending_transactions)
 		blockchain.add_transaction(transaction)
 		blockchain.money.append(value)
-		
-		pofb_status = PofB.verify_burn(burn_hash)
-		print('\n\n\n\n\nStatus',pofb_status)
-		
+				
 		if user and bcrypt.check_password_hash(user.password, password):
 			betting_house = BettingHouse.query.get_or_404(1)
 			betting_house.cash_fee(.05*value)			
@@ -388,15 +395,14 @@ def liquidate_asset():
 @app.route('/get/tokens', methods=["POST","GET"])
 def get_asset_token():
 	asset_tokens = AssetToken.query.all()
-	ls = [{'id':asset.id,'token_address':asset.token_address,'user_address':asset.user_address,'transaction_receipt':asset.transaction_receipt} for asset in asset_tokens]
+	ls = [{'id':asset.id,'token_address':asset.token_address,'user_address':asset.user_address,'transaction_receipt':asset.transaction_receipt,'username':asset.username} for asset in asset_tokens]
 	return jsonify(ls)
 
 @app.route('/make/block')
 def make_block():
 	if not blockchain:
 		return "<h3>Blockchain instance not found</h3>"
-#	blockchain.process_receipts(blockchain.receipts['value'])
-	# Retrieve data for the new block
+
 	index = len(blockchain.chain) + 1
 	previous_block = blockchain.get_latest_block()
 	previous_hash = blockchain.get_latest_block().hash#if previous_block else '0'
@@ -580,7 +586,7 @@ def mine():
 			staked_proccess = coin.process_coins(i)
 			coin_db.gas(blockchain,3)
 			stake = coin.stake_coins(blockchain.money, blockchain.staked_coins, blockchain)
-			blockchain.market_cap += stake  + staked_proccess
+			blockchain.market_cap += stake # + staked_proccess
 			staked_coins.append(stake) #+ 
 			staked_coins.append(coin_db.new_coins)# .market_cap # Add the stake value to the total
 			blockchain.mine_pending_transactions(1)
@@ -659,7 +665,7 @@ def buy_or_sell():
 			# Create the block data
 			block_data = {
 				'index': len(blockchain.chain) + 1,
-				'previous_hash': blockchain.get_latest_block().hash if blockchain.chain else '0',
+				'previous_hash': blockchain.get_latest_block().hash,
 				'datetime': str(dt.datetime.now()),
 				'transactions': blockchain.pending_transactions,
 			}
@@ -772,24 +778,24 @@ def invest_options():
 		ticker = request.values.get("ticker").upper()
 		t = yf.Ticker(ticker)
 		hist = t.history(period='1d',interval='1m')
+		df = t.history(period='1y',interval='1d')["Close"]
 		price = hist['Close'][-1]
 		S = price
 		K = float(request.form['K'])
 		T = float(request.form['T'])
-		r = float(request.form['r'])
-		sigma = float(request.form['sigma'])
-		option_type = request.form['option_type']
-		option_price = black_scholes(S, K, T, r, sigma,option_type)
+		r = 0.05 #float(request.form['r'])
+		sigma = np.std(df.pct_change())*np.sqrt(256)#f
+		option_price = black_scholes(S, K, T, r, sigma)
 		print("\n\noption price",option_price,"\n\n")
 		
 		user = Users.query.filter_by(username=username).first()
 		wal = Wallet.query.filter_by(address=username).first()
+		token_cap = option_price*float(stake)
 		
 		if user and bcrypt.check_password_hash(user.password, password):
-			token_cap = option_price*float(stake)
 			if wal.coins > token_cap:
 				wal.coins -= token_cap
-				new_oi = OptionInvestment(username = username, user_address = user.personal_token, transaction_receipt = inv.receipt, asset_name=inv.investment_name, quantity=stake, strike = K, maturity = T, risk_free = r, vol=sigma ,change_value = inv.change_value , starting_price = option_price, market_price = price)
+				new_oi = OptionInvestment(time=dt.date.today(), username = username, user_address = user.personal_token, transaction_receipt = inv.receipt, asset_name=inv.investment_name, quantity=stake, strike = K, maturity = T, risk_free = r, vol=sigma ,change_value = inv.change_value , starting_price = option_price, market_price = price)
 				db.session.add(new_oi)
 				db.session.commit()
 			else:
@@ -815,15 +821,18 @@ def sell_options():
 		oi = OptionInvestment.query.filter_by(transaction_receipt=receipt).first_or_404()
 		
 		t = yf.Ticker(ticker)
+		df = t.history(period='1y', interval='1d')["Close"]
+		
 		hist = t.history(period='1d', interval='1m')
 		price = hist['Close'][-1]
 		S = price
 		K = oi.strike
-		T = oi.maturity
-		r = oi.risk_free
-		sigma = oi.vol
+		diff = (dt.date.today() - oi.time)/365
+		T = oi.maturity - diff
+		r = 0.05 #oi.risk_free
+		sigma = np.std(df.pct_change()[1:])*np.sqrt(256)
 		option_price = black_scholes(S, K, T, r, sigma)
-		print("\n\noption price", option_price, "\n\n\n")
+		print('\nsigma\n',sigma,"\n\noption price", option_price, "\n\n\n")
 		
 		user = Users.query.filter_by(username=username).first()
 		wal = Wallet.query.filter_by(address=username).first()
@@ -838,8 +847,6 @@ def sell_options():
 			return "<h3>Error: Invalid username or password</h3>"
 	return render_template("options-sell.html")
 		
-
-
 
 @app.route('/get/myoptions/<username>', methods=['GET','POST'])
 def get_myoptions(username):
