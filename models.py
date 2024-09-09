@@ -205,6 +205,7 @@ class OptionInvestment(db.Model):
     transaction_receipt = db.Column(db.String)
     asset_name = db.Column(db.String,default=0.0)
     quantity = db.Column(db.Float())
+    time = db.Column(db.DateTime())
     strike = db.Column(db.Float(), default=0)
     maturity = db.Column(db.Float(), default=0.0)
     risk_free = db.Column(db.Float())
@@ -291,7 +292,7 @@ class InvestmentDatabase(db.Model):
     investors = db.Column(db.Integer)
     receipt = db.Column(db.String(1024),unique=True)
     tokenized_price = db.Column(db.Float,default=0.0) # tokenized_value
-    ls = MutableList(default=[])
+    ls = MutableList()
 
     def update_token_value(self):
         self.tokenized_price = self.market_cap/self.coins_value
